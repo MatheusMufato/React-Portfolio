@@ -1,6 +1,7 @@
 import React from 'react'
 import { TypeAnimation } from 'react-type-animation';
 import '../css/Home.css'
+import Logo from '../images/Logo.pgn.png';
 
 const Typing = () => {
     return (
@@ -9,7 +10,7 @@ const Typing = () => {
             'Front-end developer',
             3000, 
             '',
-            1000,
+            2000,
             'Freelancer',
             3000,
             ]}
@@ -28,13 +29,15 @@ const Home = () => {
             <div className="container">
                 <div className="row">
                     <div className="home-info padd-15">
-                        <h3 className="hello">Hi Everyone, my name is <span className="name">Matheus P Mufato</span></h3>
+                        <h3 className="hello">Hi Everyone, my name is <span className="name"> Matheus Mufato</span></h3>
                         <h3 className="my-profession">I'm a <span className="typing"> <Typing/></span></h3>
-                        <p>I'm a front-end dev with experience for over a year. My expertise is to create and website design, graphic design, and many more...</p>
+                        <p>I'm a front-end developer with just over a year of experience. I specialize in HTML, CSS, and JavaScript, 
+                            and enjoy creating responsive, user-friendly web interfaces. I'm passionate about coding and continuously learning new technologies to improve my skills.</p>
+
                         <a href="#Contact" className="btn">Dowload CV </a>
                     </div>
                         <div className="home-img padd-15">
-                        
+                            <img src={Logo} />
                         </div>
                 </div>
             </div>
