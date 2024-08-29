@@ -9,7 +9,7 @@ import './assets/css/App.css';
         <>
         <Aside/>
 
-        <Home/>
+        <Home />
         </>
     )
 }

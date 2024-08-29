@@ -4,6 +4,7 @@ import { FaInfo } from "react-icons/fa";
 import { MdDesignServices } from "react-icons/md";
 import { SlScreenDesktop } from "react-icons/sl";
 import { FaPhoneAlt } from "react-icons/fa";
+import Home from './Home'
 import '../css/Aside.css'
 
 const Aside = () => {

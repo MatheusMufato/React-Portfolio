@@ -1,7 +1,7 @@
 import React from 'react'
 import { TypeAnimation } from 'react-type-animation';
 import '../css/Home.css'
-import Logo from '../images/Logo.pgn.png';
+import Dev from '../images/Dev.png';
 
 const Typing = () => {
     return (
@@ -22,7 +22,6 @@ const Typing = () => {
         );
     };
 
-
 const Home = () => {
     return (
         <section className="home section " id="home">
@@ -34,10 +33,10 @@ const Home = () => {
                         <p>I'm a front-end developer with just over a year of experience. I specialize in HTML, CSS, and JavaScript, 
                             and enjoy creating responsive, user-friendly web interfaces. I'm passionate about coding and continuously learning new technologies to improve my skills.</p>
 
-                        <a href="#Contact" className="btn">Dowload CV </a>
+                        <a href="#Contact" className="btn">Dowload CV</a>
                     </div>
                         <div className="home-img padd-15">
-                            <img src={Logo} />
+                            <img src={Dev} />
                         </div>
                 </div>
             </div>
