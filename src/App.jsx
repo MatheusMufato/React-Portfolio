@@ -1,5 +1,6 @@
-import Home from './assets/pages/Aside';
-import Aside from './assets/pages/Home';
+import Aside from './assets/pages/Aside';
+import Home from './assets/pages/Home';
+import Skills from './assets/pages/skills';
 import './assets/css/App.css';
 
     function App() {

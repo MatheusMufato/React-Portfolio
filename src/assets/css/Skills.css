@@ -1,0 +1,70 @@
+
+
+.service .services-item{
+    margin-bottom: 30px;
+    flex: 0 0 33.33%;
+    max-width: 33.33%; 
+}
+
+.service .services-item .service-item-inner{
+    background-color: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transform: all 0.8s ease;
+}
+
+.service .services-item .service-item-inner:hover{
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
+.service .services-item .service-item-inner .icon{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 30px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.service .services-item .service-item-inner .icon{
+    font-size: 60px;
+    line-height: 60px;
+}
+
+.icon1{
+    color: #FF5733;
+}
+
+.icon2{
+    color: #00BFFF;
+}
+
+.icon3{
+    color: #FFC300;
+}
+
+.icon4{
+    color:rgb(0, 234, 255);
+}
+
+.service .services-item .service-item-inner:hover .icon{
+    color: #FFFFFF;
+    transform: scale(1.1);
+}
+
+.service .services-item .service-item-inner h4{
+    font-size:  18px;
+    margin-bottom: 15px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.service .services-item .service-item-inner p{
+    font-size:  16px;
+    color: var(--text-black-700);
+    line-height: 25px;
+}
