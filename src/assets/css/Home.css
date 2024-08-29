@@ -9,6 +9,7 @@
     max-width: 60%;
 }
 .home-info p{
+    margin-top: 70px;
     margin-bottom: 70px;
     font-size: 20px;
     color: var(--text-black-700);
@@ -33,13 +34,13 @@ h3.my-profession{
 }
 
 .typing{
-    color: var(--skin-color);
+    color: red;
     font-family: 'Ubunto', sans-serif;
 }
 
 .home .home-img{
     flex: 0 0 40%;
-    max-width: 40%;
+    max-width: 50%;
     text-align: center;
     position: relative;
 }
@@ -47,26 +48,26 @@ h3.my-profession{
     content: '';
     position: absolute;
     height: 80px;
-    border-bottom: 10px solid var(--skin-color);
-    border-right: 10px solid var(--skin-color);
+    border-bottom: 10px solid red;
+    border-right: 10px solid red;
     width: 80px;
-    right: 25px;
-    bottom:-45px;
+    right: 40px;
+    bottom: 45px;
 }
 
 .home-img::before{
     content: '';
     position: absolute;
     height: 80px;
-    border-top: 10px solid var(--skin-color);
-    border-left: 10px solid var(--skin-color);
+    border-top: 10px solid red;
+    border-left: 10px solid red;
     width: 80px;
-    left: 25px;
+    left: 40px;
     top: -45px;
 }
 
 .home .home-img img{
     margin: auto;
     border-radius: 5px;
-    height: 400px;
+    height: 80%;
 }

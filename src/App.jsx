@@ -1,5 +1,6 @@
-import Home from './assets/pages/Aside';
-import Aside from './assets/pages/Home';
+import Aside from './assets/pages/Aside';
+import Home from './assets/pages/Home';
+import About from './assets/pages/About';
 import './assets/css/App.css';
 
     function App() {
@@ -7,8 +8,8 @@ import './assets/css/App.css';
         <>
         <Aside/>
 
-        <Home/>
-    </>
+        <About/>
+        </>
     )
 }
 

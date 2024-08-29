@@ -10,7 +10,8 @@ const Aside = () => {
     return (
         <div className="aside">
             <div className="logo">
-                <a href="#"><span>Matheus</span></a>
+                <a href="#">
+                    <span>   Matheus    </span></a>
             </div>
             <div className="nav-toggler">
                 <span></span>
