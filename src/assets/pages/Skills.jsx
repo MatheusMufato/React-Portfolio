@@ -4,6 +4,7 @@ import { FaCss3 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { FaReact } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { FaC } from "react-icons/fa6";
 import '../css/Skills.css'
 
 const Skills = () => {
@@ -21,18 +22,17 @@ const Skills = () => {
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
                         <div className="icon icon1">
-                            <i>  <FaHtml5 />  </i>
+                            <i><FaHtml5 /></i>
                         </div>
                         <h4>HTML</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, molestiae.</p>
                     </div>
                 </div>
 
-
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
                         <div className="icon icon2">
-                            <i>  <FaCss3 />  </i>
+                            <i><FaCss3 /></i>
                         </div>
                         <h4>Css</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, molestiae.</p>
@@ -43,7 +43,7 @@ const Skills = () => {
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
                         <div className="icon icon3">
-                            <i>  <IoLogoJavascript />  </i>
+                            <i><IoLogoJavascript /></i>
                         </div>
                         <h4>JavaScript</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, molestiae.</p>
@@ -53,31 +53,29 @@ const Skills = () => {
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
                         <div className="icon icon4">
-                            <i>  <FaReact />  </i>
+                            <i><FaReact /></i>
                         </div>
                         <h4>React</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, molestiae.</p>
                     </div>
                 </div>
 
-
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
                         <div className="icon">
-                            <i>  <FaGithub />  </i>
+                            <i><FaC /></i>
                         </div>
-                        <h4>GitHub</h4>
+                        <h4>C / C++</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, molestiae.</p>
                     </div>
                 </div>
 
-
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
                         <div className="icon">
-                            <i>  <IoLogoJavascript />  </i>
+                            <i><FaGithub /></i>
                         </div>
-                        <h4>JavaScript</h4>
+                        <h4>GitHub</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, molestiae.</p>
                     </div>
                 </div>

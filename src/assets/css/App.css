@@ -42,14 +42,14 @@ ul{
     display: flex;
     padding: 0 30px;
     opacity: 1;
-    position:absolute;
+    position: fixed;
     left: 260px;
     top: 0;
     right: 0;
     bottom: 0;
     z-index: 0;
     overflow-y: auto;
-    overflow: hidden;
+    overflow-x: hidden;
     transition: all 0.3s ease;
 }
 .section.back-section{
@@ -216,41 +216,7 @@ ul{
     line-height: 25px;
 }
 
-/* ==== Portfolio ====*/
 
-.portfolio .container{
-    padding-bottom: 40px;
-
-}
-
-.portfolio .portfolio-heading{
-    flex:  0 0 100%;
-    max-width: 100%;
-    margin-bottom: 40px;
-}
-
-.portfolio .portfolio-heading h2{
-    color: var(--text-black-900);
-    font-weight: 900;
-}
-
-.portfolio .portfolio-item{
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
-    margin-bottom: 30px;
-}
-
-.portfolio .portfolio-item-inner{
-    border: 6px solid var(--bg-black-100);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.portfolio .portfolio-item-inner .portfolio-img img{
-    width: 100%;
-    display: block;
-}
 
 /* ==== Contact ====*/
 .contact-title{

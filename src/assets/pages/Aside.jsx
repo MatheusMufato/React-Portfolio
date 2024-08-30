@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import Home from './Home';
 import Skills from './Skills';
 import About from './About';
+import Portfolio from './Portfolio';
+import Teste from './Teste.jsx';
 import '../css/Aside.css';
-import { FaHome } from "react-icons/fa";
-import { FaInfo } from "react-icons/fa";
+import { FaHome,FaInfo,FaPhoneAlt } from "react-icons/fa";
 import { MdDesignServices } from "react-icons/md";
 import { SlScreenDesktop } from "react-icons/sl";
-import { FaPhoneAlt } from "react-icons/fa";
 
 function Aside() {
     const [currentPage, setCurrentPage] = useState("home");
@@ -24,10 +24,12 @@ function Aside() {
                 return <Skills />;
             case "about":
                 return <About />;
-            case "about":
+            case "Portfolio":
                 return <Portfolio />;
             case "contact":
                 return <Contact />;
+            case "Teste":
+                return <Teste />;
             default:
                 return <Home />;
         }
@@ -61,13 +63,18 @@ function Aside() {
                             </a>
                         </li>
                         <li>
-                            <a href="#" className={currentPage === "Portfólio" ? "active" : ""} onClick={() => handlePageChange("Portfólio")}>
-                                <i><SlScreenDesktop /></i>Portfólio
+                            <a href="#" className={currentPage === "Portfolio" ? "active" : ""} onClick={() => handlePageChange("Portfolio")}>
+                                <i><SlScreenDesktop /></i>Portfolio
                             </a>
                         </li>
                         <li>
                             <a href="#" className={currentPage === "Contact" ? "active" : ""} onClick={() => handlePageChange("Contact")}>
                                 <i><FaPhoneAlt /></i>Contact
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" className={currentPage === "Teste" ? "active" : ""} onClick={() => handlePageChange("Teste")}>
+                                <i></i>Teste
                             </a>
                         </li>
                         
