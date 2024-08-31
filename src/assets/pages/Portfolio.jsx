@@ -1,7 +1,7 @@
 import React from 'react'
 import '../css/Portfolio.css'
 import IphoneWeb from '../images/iphone-web.png'
-
+import Teste from './Teste'
 const Portfolio = () => {
     
     return (
@@ -23,7 +23,7 @@ const Portfolio = () => {
                             <div className="portfolio-item-inner shadow-dark">
                                 <div className="portfolio-img">
                                     <a href="">
-                                        <img alt="Iphone-Webiste" src={IphoneWeb}/>
+                                        <img alt="Iphone-Webiste" src={IphoneWeb}  />
                                     </a>
                                 </div>
                             </div>

@@ -1,91 +1,66 @@
-import React from "react";
-import IphoneSite from "./Sub-pages/IphoneSite";
+import React from 'react'
+import '.../css/Sub-pages/Iphone.css'
+import Full from '../images/Full.png'
+import { IoReturnDownBack } from "react-icons/io5";
+import { FaGithub } from "react-icons/fa";
+import { CiMonitor } from "react-icons/ci";
 
-const IphoneSite = () => {
+const Teste = () => {
     return (
-        <div className="row">
-        <div className="personal-info padd-15">
-            <div className="row">
-            <div className="info-item padd-15">
-                <p>
-                Birthday : <span>30 Apr 2003</span>
-                </p>
-            </div>
-            <div className="info-item padd-15">
-                <p>
-                Age : <span>20 years</span>
-                </p>
-            </div>
-            <div className="info-item padd-15">
-                <p>
-                Phone : <span>+55 19 99616-8273</span>
-                </p>
-            </div>
-            <div className="info-item padd-15">
-                <p>
-                Email : <span>mmufato@gmail.com</span>
-                </p>
-            </div>
-            <div className="info-item padd-15">
-                <p>
-                Country : <span>Brazil</span>
-                </p>
-            </div>
-            <div className="info-item padd-15">
-                <p>
-                Freelancer : <span className="freelancer">Available</span>
-                </p>
-            </div>
-            </div>
-            <div className="row">
-            <div className="buttons padd-15">
-                <a href="#contact" data-section-index="1" className="btn Hire-me">
-                Hire-me
-                </a>
-            </div>
-            </div>
-        </div>
-        <div className="skills padd-15">
-            <div className="row">
-            <div className="skill-item padd-15">
-                <h5>HTML</h5>
-                <div className="progress">
-                <div className="progress-in" style="width: 89%;"></div>
-                <div className="skill-percent">89%</div>
+        <section className='Iphone section imageFadeIn'>
+            <div className="Image-container">
+                <div className="Image">
+                    <img src={Full} alt="FullSite" className='imageFadeIn'/>
                 </div>
             </div>
-            <div className="skill-item padd-15">
-                <h5>CSS</h5>
-                <div className="progress green">
-                <div className="progress-in" style="width: 86%;"></div>
-                <div className="skill-percent">86%</div>
+            <div className="InfoContainer">
+                <div className="UpSection">
+                    <div className="BackBtn">
+                        <IoReturnDownBack className='Back' onClick={() => window.history.back()}/>
+                    </div>
+                    
                 </div>
-            </div>
-            <div className="skill-item padd-15">
-                <h5>JS</h5>
-                <div className="progress blue">
-                <div className="progress-in" style="width: 27%;"></div>
-                <div className="skill-percent">27%</div>
-                </div>
-            </div>
-            <div className="skill-item padd-15">
-                <h5>PHP</h5>
-                <div className="progress purple">
-                <div className="progress-in" style="width: 56%;"></div>
-                <div className="skill-percent">56%</div>
-                </div>
-            </div>
-            <div className="skill-item padd-15">
-                <h5>C/C++</h5>
-                <div className="progress red">
-                <div className="progress-in" style="width: 68%;"></div>
-                <div className="skill-percent">68%</div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-    );
-};
 
-export default IphoneSite;
+                <div className="MidSection">
+                    <div className="Title">
+                        <h1>Iphone 15 Pro</h1>
+                    </div>
+                    
+                    <div className="Description info">
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tortor ut. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tortor ut. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tortor ut. 
+                        </p>
+                    </div>
+
+                    <div className="Git info">
+                        <p className='TextLink'>
+                            <FaGithub className='Icon'/>
+                                Git: 
+                            <a href="https://github.com/MatheusMufato/Iphone-15-website" className='Link' target='black'>
+                                github.com/MatheusMufato/Iphone-15-website
+                            </a>
+                        </p>
+                        
+                    </div>
+
+                    <div className="Site info">
+                        <p className='TextLink'>
+                            <CiMonitor className='Icon'/>
+                                Webiste: 
+                            <a href="https://iphone15-40775.web.app" className='Link' target='black'>
+                                iphone15-40775.web.app
+                            </a>
+                        </p>
+                    </div>
+                    
+                    
+                </div>
+
+            </div>
+        </section>
+    )
+}
+
+export default Teste

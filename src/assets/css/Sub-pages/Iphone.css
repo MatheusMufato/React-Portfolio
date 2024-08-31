@@ -31,15 +31,15 @@
 @keyframes imageFadeIn {
     0% {
         opacity: 0;
-        transform: translateY(0px);
+        transform: translateX(100%);
     }
     100% {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateX(0);
     }
 }
 
-.Image {
+.imageFadeIn{
     animation: imageFadeIn 2s forwards;
 }
 @keyframes imageScroll {
@@ -124,11 +124,38 @@
     margin: 30px;
     padding: 20px;
     color: #fff;
-    font-size: 16px;
     line-height: 30px;
     text-align: justify;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
     transform: perspective(100  0px) rotatex(0deg);
     border-radius: 5px;
 }
+
+.info:hover{
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    transform: perspective(100px)  translateY(-10px);
+    background-color: #393939;
+}
+
+.TextLink{
+    font-size: 24px;
+    font-weight: bold;
+    justify-content: start;
+    display: flex;
+    align-items: center;
+}
+
+.Icon{
+    font-size: 35px;
+    margin-right: 15px;
+}
+
+.Link{
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
 
