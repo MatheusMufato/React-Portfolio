@@ -1,8 +1,6 @@
 /* ==== Portfolio ====*/
-
 .portfolio .container{
     padding-bottom: 40px;
-
 }
 
 .portfolio .portfolio-heading{
@@ -32,4 +30,28 @@
 .portfolio .portfolio-item-inner .portfolio-img img{
     width: 100%;
     display: block;
+}
+
+.closeBtn{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 32px;
+    cursor: pointer;
+    animation: fadeIn 3s;
+    color: #fff;
+}
+.closeBtn:hover{
+    transform: scale(1.3);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

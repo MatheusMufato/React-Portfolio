@@ -14,13 +14,6 @@ const Teste = () => {
                 </div>
             </div>
             <div className="InfoContainer">
-                <div className="UpSection">
-                    <div className="BackBtn">
-                        <IoReturnDownBack className='Back' onClick={() => window.history.back()}/>
-                    </div>
-                    
-                </div>
-
                 <div className="MidSection">
                     <div className="Title">
                         <h1>Iphone 15 Pro</h1>
