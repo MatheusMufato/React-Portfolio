@@ -19,7 +19,7 @@
 }
 
 .about .about-content .about-text h3 span{
-    color: var(--skin-color);
+    color: red;
 }
 
 .about .about-content .about-text p{
@@ -103,7 +103,7 @@
     top: 0;
     height: 100%;
     border-radius: 4px;
-    background-color: var(--skin-color);
+    background-color: red;
 }
 
 .about .about-content .skills .skill-item .skill-percent{
@@ -160,7 +160,7 @@
     height: 100%;
     left: 7px;
     top: 0;
-    background-color: var(--skin-color);
+    background-color: red;
 }
 
 .about .about-content .timeline .circle-dot{
@@ -170,7 +170,7 @@
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    background-color: var(--skin-color);
+    background-color: red;
 }
 
 .about .about-content .timeline .timeline-date{
