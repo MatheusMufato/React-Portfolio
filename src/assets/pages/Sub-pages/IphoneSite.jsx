@@ -1,7 +1,6 @@
 import React from 'react'
-import '.../css/Sub-pages/Iphone.css'
-import Full from '../images/Full.png'
-import { IoReturnDownBack } from "react-icons/io5";
+import '../../css/Sub-pages/Iphone.css'
+import Full from '../../images/Full.png'
 import { FaGithub } from "react-icons/fa";
 import { CiMonitor } from "react-icons/ci";
 
@@ -13,7 +12,7 @@ const Teste = () => {
                     <img src={Full} alt="FullSite" className='imageFadeIn'/>
                 </div>
             </div>
-            <div className="InfoContainer">
+            <div className="InfoContainer TextInfo">
                 <div className="MidSection">
                     <div className="Title">
                         <h1>Iphone 15 Pro</h1>

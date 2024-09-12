@@ -110,7 +110,7 @@ ul{
     content: '';
     height: 4px;
     width: 50px;
-    background-color: var(--skin-color);
+    background-color: red;
     position: absolute;
     top: 100%;
     left: 0;
@@ -120,7 +120,7 @@ ul{
     content: '';
     height: 4px;
     width: 25px;
-    background-color: var(--skin-color);
+    background-color: red;
     position: absolute;
     top: 100%;
     left: 0;

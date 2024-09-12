@@ -28,6 +28,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
 }
 
+@keyframes ImageShowUp{
+    0%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes imageFadeIn {
     0% {
         opacity: 0;
@@ -39,8 +50,12 @@
     }
 }
 
-.imageFadeIn{
+.TextInfo{
     animation: imageFadeIn 2s forwards;
+}
+
+.Image{
+    animation: ImageShowUp 2s forwards;
 }
 @keyframes imageScroll {
     0% {

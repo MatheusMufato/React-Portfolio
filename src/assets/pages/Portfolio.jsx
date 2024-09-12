@@ -1,8 +1,7 @@
     import React, { useState } from 'react';
     import '../css/Portfolio.css';
-    import '../css/app.css';
     import IphoneWeb from '../images/iphone-web.png';
-    import Teste from './Teste';
+    import Iphone from './Sub-pages/IphoneSite';
     import { IoMdCloseCircle } from "react-icons/io";
 
     const Portfolio = () => {
@@ -65,12 +64,45 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div className="portfolio-item padd-15" onClick={() => handleImageClick('Iphone')}>
+                            <div className="portfolio-item-inner shadow-dark">
+                                <div className="portfolio-img">
+                                    <a>
+                                        <img alt="Iphone-Webiste" src={IphoneWeb} />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="portfolio-item padd-15" onClick={() => handleImageClick('Iphone')}>
+                            <div className="portfolio-item-inner shadow-dark">
+                                <div className="portfolio-img">
+                                    <a>
+                                        <img alt="Iphone-Webiste" src={IphoneWeb} />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="portfolio-item padd-15" onClick={() => handleImageClick('Iphone')}>
+                            <div className="portfolio-item-inner shadow-dark">
+                                <div className="portfolio-img">
+                                    <a>
+                                        <img alt="Iphone-Webiste" src={IphoneWeb} />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+
                     </div>
                 </div>
 
                 {showModal && selectedModal === 'Iphone' && (
                     <>
-                        <Teste />
+                        <Iphone />
                         {showCloseButton && (
                             <a className='closeBtn' onClick={handleCloseModal}><IoMdCloseCircle /></a>
                         )}
