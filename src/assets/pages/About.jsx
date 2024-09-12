@@ -16,15 +16,15 @@ const About = () => {
                                             <div className="row">
                                                 <div className="about-text padd-15">
                                                     <h3>Hello There, I'm Matheus </h3>
-                                                        <p>I'm 21 years old and I'm a Computer Engineering student at Uniara (Universidade de Araraquara), Araraquara, São Paulo, Brazil</p>
+                                                        <p>I'm 21 years old and I'm a Computer Engineering student at Uniara (Universidade de Araraquara).</p>
                                                         <p>I current live in Araraquara, São Paulo, and i work as a freelancer in my spare time during my studies, always aiming to expand my knowledge of new technologies and programming languages.
                                                             Currently I've been working with front-end, creating websites, web designs, and some other things...</p>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="personal-info padd-15">
-                                                    <div className="row">
-                                                        <div className="info-item padd-15">
+                                                    <div className="row">                                    {/* Reformular informaçoes */}
+                                                        <div className="info-item padd-15">            
                                                             <p>Birthday : <span>30 Apr 2003</span></p>
                                                         </div>
                                                         <div className="info-item padd-15">
@@ -43,13 +43,33 @@ const About = () => {
                                                             <p>Freelancer : <span className="freelancer">Available</span></p>
                                                         </div>
                                                     </div>
+                                                    
+                                                </div>
+                                                <div className="skills padd-15">
                                                     <div className="row">
-                                                        <div className="buttons padd-15">
-                                                            <a href="#contact" data-section-index="1" className="btn Hire-me">Hire-me</a>
+                                                        <div className="skill-item padd-15">
+                                                            <h5>HTML</h5>
+                                                            <div className="progress">
+                                                                <div className="progress-in" ></div>
+                                                                <div className="skill-percent">89%</div>
+                                                            </div>
                                                         </div>
+                                                        <div className="skill-item padd-15">
+                                                            <h5>CSS</h5>
+                                                            <div className="progress green">
+                                                                <div className="progress-in" ></div>
+                                                                <div className="skill-percent">86%</div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="skill-item padd-15">
+                                                            <h5>JS</h5>
+                                                            <div className="progress blue">
+                                                                <div className="progress-in" ></div>
+                                                                <div className="skill-percent">27%</div>
+                                                            </div>
+                                                        </div>
+                                                        
                                                     </div>
-
-
                                                 </div>
                                                 
                                             </div>
