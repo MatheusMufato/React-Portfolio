@@ -20,16 +20,21 @@ const Teste = () => {
                     
                     <div className="Description info">
                         <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tortor ut. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tortor ut. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in tortor ut. 
+                        Este site, desenvolvido em React, foi criado para destacar a essência e sofisticação
+                        do iPhone 15 Pro. Com um design visualmente atraente e uma navegação fluida, 
+                        a experiência oferecida é moderna e intuitiva, refletindo a inovação que o iPhone 15 Pro traz.
+                            <br />
+                        O layout foi pensado para proporcionar uma experiência imersiva, 
+                        com transições suaves e conteúdo interativo que envolve o usuário. Cada detalhe foi cuidadosamente planejado, 
+                        garantindo que o site seja responsivo e otimizado para diferentes dispositivos e tamanhos de tela. 
+
                         </p>
                     </div>
 
                     <div className="Git info">
                         <p className='TextLink'>
                             <FaGithub className='Icon'/>
-                                Git: 
+                                Code: 
                             <a href="https://github.com/MatheusMufato/Iphone-15-website" className='Link' target='black'>
                                 github.com/MatheusMufato/Iphone-15-website
                             </a>
