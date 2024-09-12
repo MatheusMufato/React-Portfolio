@@ -62,7 +62,7 @@ const Skills = () => {
 
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
-                        <div className="icon">
+                        <div className="icon icon5">
                             <i><FaC /></i>
                         </div>
                         <h4>C / C++</h4>
@@ -72,7 +72,7 @@ const Skills = () => {
 
                 <div className="services-item padd-15">
                     <div className="service-item-inner">
-                        <div className="icon">
+                        <div className="icon icon5">
                             <i><FaGithub /></i>
                         </div>
                         <h4>GitHub</h4>

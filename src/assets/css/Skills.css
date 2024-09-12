@@ -48,9 +48,12 @@
     color:rgb(0, 234, 255);
 }
 
+.icon5{
+    color: #FFF;
+}
+
 .service .services-item .service-item-inner:hover .icon{
-    color: #FFFFFF;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .service .services-item .service-item-inner h4{
