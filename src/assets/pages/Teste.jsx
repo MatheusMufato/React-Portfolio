@@ -1,9 +1,11 @@
 import React from 'react'
 import '../css/Contact.css'
 import { FaWhatsapp } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { CiLinkedin } from "react-icons/ci";
-import { LuMapPin } from "react-icons/lu";
+
+
 
 const handleWhatsappClick = () => {
     window.open('https://wa.me/5519996168273', '_blank');
@@ -27,10 +29,10 @@ const Teste = () => {
                     <div className="row">
                         <div className="contact-info-item padd-15">
                             <div className="icon">
-                                <i className='fa'><FaWhatsapp /></i>
+                                <i className='fa'><FaGithub /></i>
                             </div>
-                            <h4>Call me</h4>
-                            <a onClick={handleWhatsappClick}><p>+55 19 99616-8273</p></a>
+                            <h4>Git hub</h4>
+                            <a href='https://github.com/MatheusMufato' target='blanck'><p>MatheusMufato</p></a>
                         </div>
                             <div className="contact-info-item padd-15">
                                 <div className="icon">
@@ -46,7 +48,6 @@ const Teste = () => {
                             <h4>Linkedin</h4>
                             <a href='https://linkedin.com/in/matheus-pestiglio-mufato-815b4a215' target='blank'><p>Matheus P. Mufato</p></a>
                         </div>
-                        
                     </div>
                 </div>
             </section>
