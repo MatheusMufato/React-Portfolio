@@ -109,10 +109,10 @@ export default function Hero() {
 
               {!photoFailed ? (
                 <picture>
-                  <source srcSet="/imagens/Matheus.jpg" type="image/jpeg" />
+                  <source srcSet={`${import.meta.env.BASE_URL}imagens/Matheus.jpg`} type="image/jpeg" />
                   <img
                     className="hero-photo"
-                    src="/imagens/Matheus.jpg"
+                    src={`${import.meta.env.BASE_URL}imagens/Matheus.jpg`}
                     loading="lazy"
                     alt={profile.name}
                     onError={() => setPhotoFailed(true)}

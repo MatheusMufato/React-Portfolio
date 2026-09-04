@@ -1,11 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS = [
-  { id: "home", label: "~/home", icon: "fa-home" },
-  { id: "about", label: "~/about", icon: "fa-user" },
-  { id: "services", label: "~/services", icon: "fa-list" },
-  { id: "portfolio", label: "~/work", icon: "fa-briefcase" },
-  { id: "contact", label: "~/contact", icon: "fa-comments" },
+  { id: "home", label: "Home", icon: "fa-home" },
+  { id: "about", label: "About", icon: "fa-user" },
+  { id: "services", label: "Services", icon: "fa-list" },
+  { id: "portfolio", label: "Work", icon: "fa-briefcase" },
+  { id: "contact", label: "Contact", icon: "fa-comments" },
 ];
 
 export default function Sidebar({ active, onNavigate, menuOpen, onToggleMenu, profileName }) {
