@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useActiveSection } from "./hooks/useActiveSection";
+import { useSectionScrollNav } from "./hooks/useSectionScrollNav";
 import { profile } from "./data/profile";
 import Sidebar from "./components/layout/Sidebar/Sidebar";
 import ThemeSwitcher from "./components/layout/ThemeSwitcher/ThemeSwitcher";
@@ -26,8 +27,13 @@ const sectionVariants = {
 };
 
 function AppShell() {
-  const { active, goTo } = useActiveSection("home");
+  const { active, goTo, next, prev } = useActiveSection("home");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Rolar até o topo/fundo da seção atual e continuar na mesma direção
+  // avança pra próxima/anterior — pausado enquanto o menu mobile está
+  // aberto, pra não trocar de seção por baixo do overlay.
+  useSectionScrollNav({ enabled: !menuOpen, onNext: next, onPrev: prev });
 
   function toggleMenu() {
     setMenuOpen((open) => !open);

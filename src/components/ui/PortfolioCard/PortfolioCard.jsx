@@ -2,6 +2,11 @@ import { motion } from "framer-motion";
 import Reveal from "../Reveal/Reveal";
 
 export default function PortfolioCard({ title, link, imgBase, ext, delay = 0 }) {
+  // imgBase vem de projects.js como caminho absoluto ("/imagens/Foo");
+  // com `base` configurado no vite.config.js (deploy no GitHub Pages),
+  // um caminho absoluto puro ignora esse prefixo e sempre dá 404.
+  const resolvedBase = `${import.meta.env.BASE_URL}${imgBase.replace(/^\//, "")}`;
+
   return (
     <Reveal className="portfolio-item padd-15" delay={delay}>
       <motion.a
@@ -16,9 +21,9 @@ export default function PortfolioCard({ title, link, imgBase, ext, delay = 0 }) 
       >
         <div className="portfolio-img">
           <picture>
-            <source srcSet={`${imgBase}.webp`} type="image/webp" />
-            <source srcSet={`${imgBase}.${ext}`} type={`image/${ext}`} />
-            <img src={`${imgBase}.${ext}`} loading="lazy" alt={title} />
+            <source srcSet={`${resolvedBase}.webp`} type="image/webp" />
+            <source srcSet={`${resolvedBase}.${ext}`} type={`image/${ext}`} />
+            <img src={`${resolvedBase}.${ext}`} loading="lazy" alt={title} />
           </picture>
         </div>
       </motion.a>
