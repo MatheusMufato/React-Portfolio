@@ -32,6 +32,11 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Vite só inlina VITE_* no bundle final se a variável existir no
+          # ambiente do build. .env.local nunca vai pro repo (gitignored),
+          # então esse secret é a única forma do build da CI ter a chave.
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
