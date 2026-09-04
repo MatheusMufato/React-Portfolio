@@ -608,6 +608,15 @@ html{
     margin: 0 auto;
 }
 
+/* <picture> é inline por padrão: sobra ~6px de espaço na base (baseline
+   de line-height), a <img> filha nunca chega a 100% da altura do frame
+   e o contorno (que segue o frame, não a foto) fica com um gap embaixo. */
+.hero-photo-frame picture{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .hero-photo-glow{
     position: absolute;
     inset: -34px;
