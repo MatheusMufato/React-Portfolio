@@ -24,6 +24,9 @@
     --radius-lg: 22px;
 
     --ease-out-exp: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --status-success: #4ade80;
+    --status-error: #f87171;
 }
 
 body.light{
@@ -32,6 +35,11 @@ body.light{
     --bg-black-50: #e1e4ed;
     --text-black-900: #12151f;
     --text-black-700: #5b6478;
+
+    /* Tons mais escuros no claro: as versões do modo escuro não passam
+       4.5:1 de contraste sobre o fundo quase branco. */
+    --status-success: #15803d;
+    --status-error: #b91c1c;
 }
 
 body{
@@ -1205,6 +1213,58 @@ html{
 .contact .contact-form .btn{
     height: 50px;
     padding: 0 40px;
+}
+
+.contact .contact-form .btn:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.contact .contact-form .form-control:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.contact .contact-form .form-actions{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.form-status{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-status-success,
+.form-status-error{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-status-success{
+    color: var(--status-success);
+}
+
+.form-status-error{
+    color: var(--status-error);
+}
+
+/* Honeypot: existe no DOM (bots que auto-preenchem campos escondidos
+   caem nele) mas nunca é visível ou alcançável por teclado/leitor de tela. */
+.visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 @media(max-width: 900px){
