@@ -1,7 +1,7 @@
 export const profile = {
   name: "Matheus Pestiglio Mufato",
   firstName: "Matheus",
-  terminalPrompt: "~/matheus $ whoami",
+  terminalPrompt: "Matheus ",
   professions: ["Front-end Developer", "Web-Designer", "Freelancer"],
   heroText:
     "I'm a Front-end Developer with experience creating websites, web design and interactive web applications.",
@@ -22,7 +22,6 @@ export const profile = {
   freelancerStatus: "Open to work",
   website: "MatheusMufatoDev.com.br",
   github: "https://github.com/MatheusMufato",
-  linkedin: "#",
-  behance: "#",
+  linkedin: "https://www.linkedin.com/in/matheus-pestiglio-mufato-815b4a215",
   cvUrl: "#contact",
 };

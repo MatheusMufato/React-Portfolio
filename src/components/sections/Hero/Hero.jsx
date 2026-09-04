@@ -10,7 +10,7 @@ import PlexusBackground from "./PlexusBackground";
 // ícones sociais, seja qual for a altura do conteúdo.
 const CHIPS = [
   { label: "React", top: "0%", left: "50%", rotate: -6 },
-  { label: "Three.js", top: "10%", left: "80%", rotate: 4 },
+  { label: "Three.js", top: "10%", left: "90%", rotate: 4 },
   { label: "Tailwind", top: "48%", left: "48%", rotate: 5 },
   { label: "Framer Motion", top: "86%", left: "80%", rotate: -4 },
 ];
@@ -83,9 +83,6 @@ export default function Hero() {
               </a>
               <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
                 <i className="fab fa-github"></i>
-              </a>
-              <a href={profile.behance} target="_blank" rel="noreferrer" aria-label="Behance">
-                <i className="fab fa-behance"></i>
               </a>
             </div>
           </motion.div>
