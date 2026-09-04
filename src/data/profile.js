@@ -1,0 +1,28 @@
+export const profile = {
+  name: "Matheus Pestiglio Mufato",
+  firstName: "Matheus",
+  terminalPrompt: "~/matheus $ whoami",
+  professions: ["Front-end Developer", "Web-Designer", "Freelancer"],
+  heroText:
+    "I'm a Front-end Developer with experience creating websites, web design and interactive web applications.",
+  aboutTitle: "Front-end Developer",
+  aboutText: [
+    "I'm a Computer Engineering graduate from Uniara (Universidade de Araraquara), based in Araraquara, São Paulo, Brazil.",
+    "Between 2023 and 2024, I worked as a freelance front-end developer — planning, designing and shipping full websites for startups, with SEO and analytics baked in.",
+    "From late 2024 to 2026, I moved into technical-administrative support at a telecom company, building reporting dashboards and production-tracking tools for field teams. I'm currently open to new front-end and freelance opportunities.",
+  ],
+  birthday: "30 Apr 2003",
+  age: 23,
+  phone: "+55 19 99616-8273",
+  email: "mmufato@gmail.com",
+  country: "Brazil",
+  city: "Araraquara",
+  language: "English",
+  languageLevel: "Advanced",
+  freelancerStatus: "Open to work",
+  website: "MatheusMufatoDev.com.br",
+  github: "https://github.com/MatheusMufato",
+  linkedin: "#",
+  behance: "#",
+  cvUrl: "#contact",
+};

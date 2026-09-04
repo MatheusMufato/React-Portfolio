@@ -1,0 +1,1389 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* Dark é o estado padrão do documento (evita flash de tema claro no load).
+   .light sobrescreve para o modo claro. */
+:root{
+    --bg-black-900: #0b0e14;
+    --bg-black-100: #12151f;
+    --bg-black-50: #232838;
+    --text-black-900: #e9ebf2;
+    --text-black-700: #8a93ac;
+    --skin-color: #008eff;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    /* Elevação: toda sombra carrega offset + blur (nunca halo 0-offset). */
+    --shadow-sm: 0 2px 10px -2px rgba(0,0,0,0.35);
+    --shadow-md: 0 16px 32px -12px rgba(0,0,0,0.45);
+    --shadow-lg: 0 28px 56px -18px rgba(0,0,0,0.55);
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+
+    --ease-out-exp: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.light{
+    --bg-black-900: #f2f2fc;
+    --bg-black-100: #ffffff;
+    --bg-black-50: #e1e4ed;
+    --text-black-900: #12151f;
+    --text-black-700: #5b6478;
+}
+
+body{
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: var(--font-body);
+    color: var(--text-black-900);
+    background: var(--bg-black-900);
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+::before,::after{
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+/* Superfícies do navegador entram no design system: seleção, scrollbar e
+   foco de teclado usam a paleta em vez do padrão do browser. */
+::selection{
+    background: color-mix(in srgb, var(--skin-color) 38%, transparent);
+    color: var(--text-black-900);
+}
+
+:focus-visible{
+    outline: 2px solid var(--skin-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+html{
+    scrollbar-color: var(--skin-color) var(--bg-black-100);
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track{
+    background: var(--bg-black-100);
+}
+::-webkit-scrollbar-thumb{
+    background: color-mix(in srgb, var(--skin-color) 55%, var(--bg-black-50));
+    border-radius: 10px;
+    border: 2px solid var(--bg-black-100);
+}
+::-webkit-scrollbar-thumb:hover{
+    background: var(--skin-color);
+}
+
+/* A troca de seção agora é feita por montagem/desmontagem via AnimatePresence
+   (ver App.jsx), não mais por empilhamento fixed + z-index. Cada seção ocupa
+   o fluxo normal do documento dentro de .main-content. */
+.section{
+    background: var(--bg-black-900);
+    min-height: 100vh;
+    display: block;
+    padding: 0 30px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.section .container{
+    position: relative;
+    z-index: 1;
+}
+
+.main-content{
+    margin-left: 270px;
+    min-height: 100vh;
+}
+
+.nav-backdrop{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 40;
+}
+
+/*
+.hidden{
+    display: none;
+}*/
+
+.padd-15{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.container{
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+}
+
+.section .container{
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+.section-title{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 80px;
+}
+
+.section-title h2{
+    font-size: 40px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    position: relative;
+}
+
+.section-title h2::before{
+    content: '';
+    height: 4px;
+    width: 50px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.section-title h2::after{
+    content: '';
+    height: 4px;
+    width: 25px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+}
+
+.btn{
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 35px;
+    background: var(--skin-color);
+    color: white;
+    display: inline-block;
+    white-space: nowrap;
+    border-radius: 40px;
+    border: none;
+    transition: all 0.4s ease;
+}
+.btn:hover{
+    transform: scale(1.07);
+}
+
+.shadow-dark{
+    box-shadow: var(--shadow-md);
+}
+
+/* Painel reutilizável: cartão base para blocos que precisam de superfície
+   (info, timeline, form) sem virar o "card de ícone+título+texto" padrão. */
+.surface-panel{
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s var(--ease-out-exp);
+}
+
+/* Bloom decorativo discreto para dar profundidade a seções sem plexus,
+   sem repetir o mesmo tratamento do Hero. */
+.section-bloom{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.section-bloom::before,
+.section-bloom::after{
+    content: '';
+    position: absolute;
+    width: 46vw;
+    height: 46vw;
+    max-width: 520px;
+    max-height: 520px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.5;
+}
+.section-bloom::before{
+    top: -14%;
+    right: -12%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--skin-color) 22%, transparent), transparent 70%);
+}
+.section-bloom::after{
+    bottom: -18%;
+    left: -10%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--skin-color) 12%, transparent), transparent 70%);
+}
+
+
+/*Aside*/
+.aside{
+
+    width: 270px;
+    background: var(--bg-black-100);
+    position: fixed;
+    padding: 30px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-right: 1px solid var(--bg-black-50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Acima do .nav-backdrop (z-index 40): sem isso, no mobile aberto,
+       qualquer toque nos links da nav acerta o backdrop e só fecha o menu. */
+    z-index: 50;
+    transition: all 0.5s ease;
+
+}
+
+.aside .logo{
+
+    position: absolute;
+    top: 50px;
+    font-size: 30px;
+    text-transform: capitalize;
+
+
+}
+
+.aside .logo a{
+    color: var(--text-black-900);
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 30px;
+    letter-spacing: 0px;
+    position: relative;
+}
+.aside .logo a span{
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 600;
+}
+.aside .logo a span .bracket{
+    color: var(--skin-color);
+}
+.aside .logo a::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-bottom: 5px solid var(--skin-color);
+    border-left: 5px solid var(--skin-color);
+    bottom: 0;
+    left: 0;
+}
+.aside .logo a::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-top: 5px solid var(--skin-color);
+    border-right: 5px solid var(--skin-color);
+    top: 0;
+    right: 0;
+}
+
+.aside .nav-toggler{
+    height: 45px;
+    width: 45px;
+    border: 1px solid var(--bg-black-50);
+    cursor: pointer;
+    position: fixed;
+    left: 300px;
+    top: 20px;
+    border-radius: 5px;
+    background: var(--bg-black-100);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.aside .nav-toggler span{
+    height: 2.5px;
+    width: 18px;
+    background: var(--skin-color);
+    display: inline-block;
+    position: relative;
+}
+.aside .nav-toggler.open span{
+    background-color: transparent;
+}
+.aside .nav-toggler span::before{
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: -5px;
+    left: 0;
+}
+.aside .nav-toggler.open span::before{
+    transform: rotate(45deg);
+    top: 0;
+}
+.aside .nav-toggler span::after{
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+.aside .nav-toggler.open span::after{
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.aside .nav{
+    margin-top: 50px;
+}
+
+.aside .nav li{
+    position: relative;
+    margin-bottom: 8px;
+    display: block;
+    font-family: var(--font-mono);
+}
+
+.aside .nav li a{
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    color: var(--text-black-700);
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: color 0.2s ease;
+}
+
+.aside .nav li a.active{
+    color: var(--text-black-900);
+}
+
+.aside .nav li a i{
+    margin-right: 12px;
+    color: var(--skin-color);
+}
+
+.nav-pill{
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--skin-color) 14%, transparent);
+    border-left: 2px solid var(--skin-color);
+    border-radius: 8px;
+    z-index: 0;
+}
+
+/* ===== Home =====*/
+
+.home{
+    /* Segue o skin-color escolhido no switcher e o par bg/text do modo
+       claro/escuro (ver ThemeContext.jsx), em vez de valores fixos. */
+    --hero-accent: var(--skin-color);
+    --hero-accent-soft: color-mix(in srgb, var(--skin-color) 16%, transparent);
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    color: var(--text-black-900);
+    background: var(--bg-black-900);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Rede "plexus" (SVG, ver PlexusBackground.jsx) cobrindo o fundo */
+.hero-plexus{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+.hero-plexus .plexus-lines line{
+    stroke: color-mix(in srgb, var(--text-black-900) 14%, transparent);
+    stroke-width: 1;
+}
+.hero-plexus .plexus-nodes circle{
+    fill: color-mix(in srgb, var(--skin-color) 45%, transparent);
+}
+
+/* Vinheta para garantir contraste do texto sobre a rede de fundo */
+.home-scrim{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(100deg,
+        color-mix(in srgb, var(--bg-black-900) 88%, transparent) 0%,
+        color-mix(in srgb, var(--bg-black-900) 55%, transparent) 45%,
+        color-mix(in srgb, var(--bg-black-900) 20%, transparent) 100%);
+}
+
+.home .container{
+    position: relative;
+    z-index: 2;
+}
+
+.home .home-info{
+    flex: 0 0 58%;
+    max-width: 58%;
+}
+.home-info p{
+    margin: 20px 0 32px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-black-700);
+    max-width: 440px;
+}
+
+.hero-hi{
+    font-size: 30px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-black-900);
+    margin: 0 0 6px;
+}
+
+.hero-name,
+.hero-role{
+    font-size: 38px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0 0 6px;
+    color: var(--text-black-900);
+}
+
+.hero-bracket{
+    color: var(--text-black-900);
+}
+
+.hero-accent-text,
+.typing{
+    color: var(--hero-accent);
+    font-weight: 700;
+}
+
+/* garante altura estável enquanto o Typed.js troca as strings */
+.hero-role{
+    min-height: 1.2em;
+    display: block;
+}
+
+.btn-hero{
+    background: var(--hero-accent);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--skin-color) 35%, transparent);
+}
+
+.hero-socials{
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.hero-socials a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--bg-black-50);
+    color: var(--text-black-900);
+    font-size: 18px;
+    background: var(--bg-black-100);
+}
+
+.hero-socials a:hover{
+    color: var(--hero-accent);
+    border-color: var(--hero-accent);
+    transform: translateY(-3px);
+}
+
+.home .home-img{
+    flex: 0 0 42%;
+    max-width: 42%;
+    text-align: center;
+    position: relative;
+}
+
+/* Camada das tags flutuantes, agora cobrindo toda a .row (texto + foto) */
+.hero-chips-layer{
+    position: absolute;
+    inset: -20px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.hero-chip{
+    position: absolute;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: color-mix(in srgb, var(--bg-black-900) 60%, transparent);
+    backdrop-filter: blur(4px);
+    border: 1px solid color-mix(in srgb, var(--text-black-900) 10%, transparent);
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--hero-accent);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--bg-black-900) 35%, transparent);
+    cursor: grab;
+    user-select: none;
+}
+
+.hero-chip:active{
+    cursor: grabbing;
+}
+
+.hero-chip .chip-tag{
+    color: var(--text-black-900);
+}
+
+@media(max-width: 991px){
+    .hero-chips-layer{
+        display: none;
+    }
+}
+
+/* Moldura da foto: blob poligonal com contorno laranja (ver Hero.jsx para
+   o path do clip-path e do contorno em SVG) */
+.hero-photo-frame{
+    position: relative;
+    width: min(360px, 78vw);
+    aspect-ratio: 0.94;
+    margin: 0 auto;
+}
+
+.hero-photo-glow{
+    position: absolute;
+    inset: -34px;
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--skin-color) 35%, transparent), transparent 70%);
+    filter: blur(24px);
+    z-index: 0;
+}
+
+.hero-photo,
+.hero-photo-fallback{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: url(#heroBlobClip);
+    -webkit-clip-path: url(#heroBlobClip);
+}
+
+.hero-photo-fallback{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--bg-black-100), var(--bg-black-900));
+    color: var(--text-black-700);
+    font-size: 72px;
+}
+
+.hero-photo-outline{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    fill: none;
+    stroke: var(--hero-accent);
+    stroke-width: 2.5;
+}
+
+/* About */
+
+.about .about-content{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .about-text{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .about-text h3{
+    font-size: clamp(22px, 2.4vw, 28px);
+    margin-bottom: 18px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    max-width: 70ch;
+}
+
+.about .about-content .about-text h3 span{
+    color: var(--skin-color);
+}
+
+.about-mark{
+    font-family: var(--font-mono);
+    color: var(--skin-color);
+    margin-right: 2px;
+}
+
+.about .about-content .about-text p{
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-black-700);
+    max-width: 68ch;
+}
+
+.about .about-content .about-text p + p{
+    margin-top: 14px;
+}
+
+/* Faixa de metadados: substitui a antiga grade "rótulo: valor" por
+   pastilhas em linha, no mesmo idioma visual das hero-chip. */
+.meta-strip{
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.meta-pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.25s ease, transform 0.25s var(--ease-out-exp), box-shadow 0.25s ease;
+}
+
+.meta-pill:hover{
+    border-color: color-mix(in srgb, var(--skin-color) 50%, var(--bg-black-50));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.meta-pill .meta-label{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-black-700);
+}
+
+.meta-pill .meta-value{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-black-900);
+}
+
+.meta-pill.meta-status .meta-value{
+    color: var(--skin-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.status-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--skin-color);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--skin-color) 55%, transparent);
+    animation: status-pulse 2.2s ease-out infinite;
+}
+
+@keyframes status-pulse{
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--skin-color) 45%, transparent); }
+    70%  { box-shadow: 0 0 0 8px color-mix(in srgb, var(--skin-color) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--skin-color) 0%, transparent); }
+}
+
+.about .about-content .personal-info{
+    flex: 0 0 58%;
+    max-width: 58%;
+    margin-top: 40px;
+}
+
+.about .about-content .personal-info .buttons{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 30px;
+}
+
+/* Skills */
+
+.about .about-content .skills{
+    flex: 0 0 42%;
+    max-width: 42%;
+    margin-top: 48px;
+}
+
+.skills-group-label{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-black-700);
+    margin-bottom: 12px;
+}
+
+.skills-group-label:not(:first-child){
+    margin-top: 26px;
+}
+
+.skill-tag-cloud{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag{
+    display: inline-block;
+    padding: 7px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-black-900);
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 999px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.skill-tag-muted{
+    font-weight: 400;
+    color: var(--text-black-700);
+    background: transparent;
+}
+
+.skill-tag:hover{
+    border-color: color-mix(in srgb, var(--skin-color) 50%, var(--bg-black-50));
+    color: var(--skin-color);
+}
+
+/* Education / Experience timeline */
+
+.about .about-content .education,
+.about .about-content .experience{
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 40px;
+}
+
+.about .about-content h3.title{
+    font-size: 22px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+
+.about .about-content .timeline-box{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .timeline{
+    background-color: var(--bg-black-100);
+    padding: 28px 22px;
+    border: 1px solid var(--bg-black-50);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    position: relative;
+}
+
+.about .about-content .timeline .timeline-item{
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 34px;
+    border-radius: var(--radius-sm);
+    transition: background 0.25s ease;
+}
+
+.about .about-content .timeline .timeline-item:hover{
+    background: color-mix(in srgb, var(--skin-color) 5%, transparent);
+}
+
+.about .about-content .timeline .timeline-item:last-child{
+    padding-bottom: 4px;
+}
+
+.about .about-content .timeline .timeline-item::before{
+    content: '';
+    width: 2px;
+    position: absolute;
+    height: 100%;
+    left: 5px;
+    top: 0;
+    background: linear-gradient(to bottom,
+        var(--skin-color),
+        color-mix(in srgb, var(--skin-color) 15%, transparent));
+}
+
+.about .about-content .timeline .timeline-item:last-child::before{
+    background: var(--skin-color);
+}
+
+.about .about-content .timeline .circle-dot{
+    position: absolute;
+    left: 0;
+    top: 3px;
+    height: 11px;
+    width: 11px;
+    border-radius: 50%;
+    background-color: var(--skin-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--skin-color) 18%, transparent);
+}
+
+.about .about-content .timeline .timeline-date{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 12px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    border-radius: 999px;
+    background: var(--bg-black-900);
+    border: 1px solid var(--bg-black-50);
+    color: var(--text-black-700);
+}
+
+.about .about-content .timeline .timeline-date i{
+    color: var(--skin-color);
+    font-size: 11px;
+}
+
+.about .about-content .timeline .timeline-date span{
+    display: none;
+}
+
+.about .about-content .timeline .timeline-title{
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: var(--text-black-900);
+}
+
+.about .about-content .timeline .timeline-text{
+    line-height: 1.6;
+    font-size: 15px;
+    text-align: left;
+    color: var(--text-black-700);
+    max-width: 65ch;
+}
+
+/* === Services ===*/
+/* Lista editorial em vez de cards idênticos ícone+título+texto: cada
+   serviço é uma linha de largura total, com hairline e revelação do
+   texto/seta no hover — hierarquia por tipografia, não por caixas. */
+
+.services-list{
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-top: 1px solid var(--bg-black-50);
+}
+
+.service-row{
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 26px 6px;
+    border-bottom: 1px solid var(--bg-black-50);
+    cursor: default;
+    transition: background 0.3s ease, transform 0.3s var(--ease-out-exp);
+}
+
+.service-row:hover,
+.service-row:focus-within{
+    background: color-mix(in srgb, var(--skin-color) 5%, transparent);
+    transform: translateX(12px);
+}
+
+.service-row .icon{
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--bg-black-50);
+    background: var(--bg-black-100);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease-out-exp);
+}
+
+.service-row .icon .fa{
+    font-size: 20px;
+    color: var(--skin-color);
+    transition: color 0.3s ease;
+}
+
+.service-row:hover .icon{
+    background: var(--skin-color);
+    border-color: var(--skin-color);
+    transform: rotate(-8deg) scale(1.05);
+}
+
+.service-row:hover .icon .fa{
+    color: var(--bg-black-900);
+}
+
+.service-row h4{
+    flex: 0 0 auto;
+    width: 240px;
+    max-width: 38%;
+    font-size: 19px;
+    color: var(--text-black-900);
+    font-weight: 700;
+}
+
+.service-row p{
+    flex: 1 1 auto;
+    font-size: 15px;
+    color: var(--text-black-700);
+    line-height: 1.6;
+    max-width: 52ch;
+}
+
+.service-row .row-arrow{
+    flex: 0 0 auto;
+    color: var(--text-black-700);
+    font-size: 15px;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.3s ease, transform 0.3s var(--ease-out-exp), color 0.3s ease;
+}
+
+.service-row:hover .row-arrow,
+.service-row:focus-within .row-arrow{
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--skin-color);
+}
+
+/* ==== Portfolio ====*/
+
+.portfolio .container{
+    padding-bottom: 40px;
+
+}
+
+.portfolio .portfolio-heading{
+    flex:  0 0 100%;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+
+.portfolio .portfolio-heading h2{
+    color: var(--text-black-900);
+    font-weight: 900;
+}
+
+.portfolio .portfolio-item{
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    margin-bottom: 30px;
+}
+
+.portfolio .portfolio-item-inner{
+    border: 6px solid var(--bg-black-100);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* aspect-ratio garante que o cartão mantenha o tamanho mesmo se a imagem
+   do projeto ainda não existir (public/imagens/ pendente — ver PRODUCT.md),
+   em vez de colapsar para o ícone de imagem quebrada do navegador. */
+.portfolio .portfolio-item-inner .portfolio-img{
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(160deg, var(--bg-black-50), var(--bg-black-100));
+    overflow: hidden;
+}
+
+.portfolio .portfolio-item-inner .portfolio-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==== Contact ====*/
+.contact-title{
+    color: var(--skin-color);
+    text-align: center;
+    font-size: 25px;
+}
+.contact-sub-title{
+    color: var(--text-black-900);
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 60px;
+}
+
+.contact-title-left,
+.contact-sub-title-left{
+    text-align: left;
+}
+.contact-title-left{
+    margin-bottom: 4px;
+}
+.contact-sub-title-left{
+    margin-bottom: 24px;
+}
+
+/* Duas colunas: lista de contato à esquerda, formulário à direita — em vez
+   de 4 cartões idênticos empilhados acima do form. */
+.contact-grid{
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: minmax(240px, 34%) 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.contact-info-list{
+    padding: 8px;
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    height: 100%;
+}
+
+.contact .contact-info-item{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 10px;
+    border-bottom: 1px solid var(--bg-black-50);
+    text-align: left;
+    transition: background 0.25s ease, transform 0.25s var(--ease-out-exp);
+}
+
+.contact-info-list .contact-info-item:last-child{
+    border-bottom: none;
+}
+
+.contact .contact-info-item:hover{
+    background: color-mix(in srgb, var(--skin-color) 5%, transparent);
+    transform: translateX(6px);
+}
+
+.contact .contact-info-item .icon{
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--bg-black-900);
+    border: 1px solid var(--bg-black-50);
+}
+.contact .contact-info-item .icon .fa{
+    font-size: 16px;
+    color: var(--skin-color);
+}
+.contact .contact-info-item h4{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-black-700);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 0 0 3px;
+}
+
+.contact .contact-info-item p{
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--text-black-900);
+    font-weight: 500;
+}
+
+.contact .contact-form{
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 28px;
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact .contact-form .col-6{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.contact .contact-form .col-12{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.contact .contact-form .form-item{
+    margin-bottom: 24px;
+}
+
+.contact .contact-form .form-item .form-control{
+    width: 100%;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-black-900);
+    border: 1px solid var(--bg-black-50);
+    padding: 10px 18px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    color: var(--text-black-900);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact .contact-form .form-item .form-control::placeholder{
+    color: var(--text-black-700);
+}
+
+.contact .contact-form .form-item .form-control:focus{
+    border-color: var(--skin-color);
+    box-shadow: 0 6px 20px -8px color-mix(in srgb, var(--skin-color) 55%, transparent);
+}
+
+.contact .contact-form .form-item textarea.form-control{
+    height: 140px;
+    padding-top: 14px;
+    resize: vertical;
+}
+
+.contact .contact-form .btn{
+    height: 50px;
+    padding: 0 40px;
+}
+
+@media(max-width: 900px){
+    .contact-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media(max-width:1199px){
+    /* left, não transform: um transform no ancestor criaria um novo
+       containing block para o .nav-toggler (position: fixed), jogando-o
+       fora da tela. */
+    .aside{
+        left: -270px;
+    }
+    .aside.open{
+        left: 0;
+    }
+    .aside .nav-toggler{
+        display: flex;
+        left: 30px;
+    }
+    .aside .nav-toggler.open{
+        left: 300px;
+    }
+
+    .main-content{
+        margin-left: 0;
+    }
+
+    /* Sem isso, o h2 de cada seção (padding-top: 60px, left: 30px) fica
+       atrás do nav-toggler fixo (top: 20px, 45px de altura, mesmo left). */
+    .section .container{
+        padding-top: 95px;
+    }
+}
+
+@media(max-width:991px){
+
+    .portfolio .portfolio-item,
+    .home .home-info{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .home .row{
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .home .home-img{
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .home-info p{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-socials{
+        justify-content: center;
+    }
+    .portfolio .portfolio-item{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .service-row{
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+    .service-row h4{
+        width: auto;
+        max-width: 100%;
+        flex: 1 1 auto;
+    }
+    .service-row p{
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 66px;
+    }
+    .service-row .row-arrow{
+        display: none;
+    }
+}
+
+@media(max-width:767px){
+    .contact .contact-form .col-6,
+    .portfolio .portfolio-item,
+    .about .about-content .skills,
+    .about .about-content .education,
+    .about .about-content .experience,
+    .about .about-content .personal-info{
+        flex: 0 0 100%;
+        max-width: 100%;
+        
+    }
+}
+
+
+/* ===== Style Switcher (portado de style-switcher.css) ===== */
+.style-switcher{
+    position: fixed;
+    right: 0;
+    top: 60px;
+    padding: 15px;
+    width: 200px;
+    border: 1px solid var(--bg-black-50);
+    background-color: var(--bg-black-100);
+    z-index: 101;
+    border-radius: 5px;
+    transition: all 0.4s ease;
+    transform: translateX(100%);
+}
+
+.style-switcher.open{
+    transform: translateX(-25px);
+}
+
+.style-switcher .s-icon{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 20px;
+    background: var(--bg-black-100);
+    color: var(--text-black-900);
+    right: 100%;
+    border: 1px solid var(--bg-black-50);
+    margin-right: 25px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border-radius: 50%;
+}
+
+.style-switcher .s-icon{
+    line-height: 40px;
+}
+.style-switcher .style-switcher-toggler{
+    top: 0;
+}
+
+.style-switcher .day-night{
+    top: 60px;
+}
+
+.style-switcher h4{
+    margin: 0 0 10px;
+    color: var(--text-black-700);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.style-switcher .colors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.style-switcher .colors span{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.style-switcher .color-1{
+    background: #c60606;
+}
+.style-switcher .color-2{
+    background: #fa5b0f;
+}
+.style-switcher .color-3{
+    background: #03c200;
+}
+.style-switcher .color-4{
+    background: #008eff;
+}
+.style-switcher .color-5{
+    background: #5500ff;
+}
